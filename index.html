@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gerador de insulto</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+  <body>
+    
+    <div id="insulto"></div>
+    
+    <a class="githublink" href="https://github.com/vitormanfredini/gerador-de-insulto">
+      <img src="https://raw.githubusercontent.com/rdimascio/icons/master/icons/github.svg" title="gerador-de-insulto repo on github" />
+    </a>
+	  
+    <script src="js/generate.js"></script>
+    <script>
+        document.getElementById('insulto').innerHTML = "<p>"+generateInsult().split("\n").join('<br />')+"</p>";
+    </script>
+
+    <style>
+        html, body {
+            width:  100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #insulto {
+            font-size:50pt;
+            line-height:62px;
+            font-family: 'Playfair', serif;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        #insulto p {
+            margin:0;
+            padding:0 0 50px 3%;
+        }
+
+        .githublink {
+            display:block;
+            width:5%;
+            position:absolute;
+            bottom:5%;
+            right:5%;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .githublink {
+                width:15%;
+            }
+            #insulto {
+                font-size:40pt;
+                line-height:60px;
+            }
+        }
+    </style>
+
+  </body>
+</html>

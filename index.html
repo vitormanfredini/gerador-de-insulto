@@ -17,9 +17,11 @@
     <div id="insulto"></div>
     
     <a class="githublink" href="https://github.com/vitormanfredini/gerador-de-insulto">
-      <img src="https://raw.githubusercontent.com/rdimascio/icons/master/icons/github.svg" title="gerador-de-insulto repo on github" />
+        <img src="https://raw.githubusercontent.com/rdimascio/icons/master/icons/github.svg" title="gerador-de-insulto repo on github" />
     </a>
-	  
+
+    <a class="refreshlink" href="javascript:location.reload();">⟳</a>
+
     <script src="js/generate.js"></script>
     <script>
         document.getElementById('insulto').innerHTML = "<p>"+generateInsult().split("\n").join('<br />')+"</p>";
@@ -54,8 +56,24 @@
             right:5%;
         }
 
+        .refreshlink {
+            display:block;
+            width:5%;
+            position:absolute;
+            bottom:15%;
+            right:5%;
+            text-decoration: none;
+            color:#000;
+            font-size:80pt;
+            text-align: center;
+        }
+
         @media only screen and (max-width: 768px) {
             .githublink {
+                width:15%;
+            }
+            .refreshlink {
+                font-size:60pt;
                 width:15%;
             }
             #insulto {

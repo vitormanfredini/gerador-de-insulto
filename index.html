@@ -19,11 +19,14 @@
         <img src="https://raw.githubusercontent.com/rdimascio/icons/master/icons/github.svg" title="gerador-de-insulto repo on github" />
     </a>
 
-    <a class="refreshlink" href="javascript:location.reload();">⟳</a>
+    <a class="refreshlink" href="javascript:refreshInsult();">⟳</a>
 
     <script src="js/generate.js"></script>
     <script>
-        document.getElementById('insulto').innerHTML = "<p>"+generateInsult().split("\n").join('<br />')+"</p>";
+        function refreshInsult(){
+            document.getElementById('insulto').innerHTML = "<p>"+generateInsult().split("\n").join('<br />')+"</p>";
+        }
+        refreshInsult();
     </script>
 
     <style>

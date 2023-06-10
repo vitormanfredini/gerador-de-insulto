@@ -1,4 +1,4 @@
-### Gerador de insulto
+### Gerador de insulto 🗣️
 
 Gerador de insultos escrito em javascript.
 
@@ -25,13 +25,11 @@ krl
 ```
 
 ```
-aa não
-parça
+aou
 sério
-para
-né
-véi
-caraio
+vai
+pra pqp
+cuzão
 ```
 
-Abra a [demo](https://vitormanfredini.github.io/gerador-de-insulto/) e recite em voz alta para reduzir o estresse. Atualize a página para um novo insulto.
+Abra a [demo](https://vitormanfredini.github.io/gerador-de-insulto/) e recite em voz alta para reduzir o estresse.

@@ -405,5 +405,8 @@ const generateInsult = () => {
     next = getNodeBySection(nextSection);
   }
 
-  return insultTokens.join("\n").split(" dos inferno").join("\ndos inferno");
+  let insult = insultTokens.join("\n");
+  insult = insult.split(" dos inferno").join("\ndos inferno");
+  insult = insult.split(" do caralho").join("\ndo caralho");
+  return insult;
 };

@@ -8,8 +8,11 @@ nodes.push({
     "aa não",
     "puts",
     "po",
-    "serio",
-    "porra"
+    "sério",
+    "porra",
+    "aê",
+    "aou",
+    "olha só"
   ],
   next: [
     "quem"
@@ -24,13 +27,18 @@ nodes.push({
     "madame",
     "jão",
     "zé",
+    "tia",
     "cara",
     "parça",
+    "piá",
+    "guria",
     "patrão",
     "patroa",
     "fi de rapariga",
     "moça",
-    "moço"
+    "moço",
+    "cuzão",
+    "cuzona"
   ],
   next: [
     "abertura_opcional"
@@ -70,6 +78,7 @@ nodes.push({
     "essa bosta",
     "essa merda",
     "isso aí",
+    "isso",
   ],
   next: [
     "principal_1_C"
@@ -116,7 +125,8 @@ nodes.push({
   tokens: [
     "fei",
     "véi",
-    "mano"
+    "mano",
+    "mina"
   ],
   next: [
     "finalizacao"
@@ -139,8 +149,11 @@ nodes.push({
   tokens: [
     "se fuder",
     "tomar no cu",
+    "tmnc",
     "pra pqp",
+    "pra casa do caralho",
     "se lascá",
+    "pro inferno"
   ],
   next: [
     "principal_3_c"
@@ -174,7 +187,9 @@ nodes.push({
   tokens: [
     "foda",
     "triste",
-    "infeliz",
+    "um infeliz",
+    "um arrombado",
+    "otário",
     "fdp",
     "fia da puta",
   ],
@@ -212,7 +227,11 @@ nodes.push({
     "krl",
     "caraio",
     "sifudê",
-    "porra"
+    "porra",
+    "arrombado",
+    "cuzão",
+    "arrombado dos inferno",
+    "cuzão dos inferno"
   ],
   next: [
     "complemento"
@@ -222,11 +241,11 @@ nodes.push({
 nodes.push({
   section: "complemento",
   tokens: [
-    "\ntá me tirando?",
-    "\nme erra",
-    "\nsai fora",
-    "\ntá loco",
-    "\nfoda viu"
+    "tá me tirando?",
+    "me erra",
+    "sai fora",
+    "tá loco",
+    "foda viu"
   ],
   next: [
     "fim"
@@ -234,12 +253,87 @@ nodes.push({
   optional: true
 });
 
+const synonyms = [
+  ["caralho", "caraio", "krl"],
+  ["fdp", "fia da puta"],
+  ["vsf", "sifudê", "se fuder"],
+  ["arrombado dos inferno", "arrombado", "arrombada dos inferno", "arrombada"],
+  ["cuzão dos inferno", "cuzão", "cuzona dos inferno", "cuzona"],
+  ["tomar no cu", "tmnc"]
+];
+
+const genderedPairs = [
+  {
+    masculine: 'mano',
+    feminine: 'mina',
+  },
+  {
+    masculine: 'piá',
+    feminine: 'guria',
+  },
+  {
+    masculine: 'jão',
+    feminine: 'fia',
+  },
+  {
+    masculine: 'zé',
+    feminine: 'tia',
+  },
+  {
+    masculine: 'hómi',
+    feminine: 'muié',
+  },
+  {
+    masculine: 'patrão',
+    feminine: 'patroa',
+  },
+  {
+    masculine: 'moço',
+    feminine: 'moça',
+  },
+  {
+    masculine: 'otário',
+    feminine: 'otária',
+  },
+  {
+    masculine: 'um infeliz',
+    feminine: 'uma infeliz',
+  },
+  {
+    masculine: 'um arrombado',
+    feminine: 'uma arrombada',
+  },
+  {
+    masculine: 'arrombado',
+    feminine: 'arrombada',
+  },
+  {
+    masculine: 'um cuzão',
+    feminine: 'uma cuzona',
+  },
+  {
+    masculine: 'cuzão',
+    feminine: 'cuzona',
+  },
+  {
+    masculine: 'arrombado dos inferno',
+    feminine: 'arrombada dos inferno',
+  },
+  {
+    masculine: 'cuzão dos inferno',
+    feminine: 'cuzona dos inferno',
+  }
+];
+
 const getNodeBySection = (section) => {
   return nodes.find(node => node.section == section);
 }
 
 const generateInsult = () => {
   const insultTokens = [];
+
+  let isMasculineInsult = false;
+  let isFeminineInsult = false;
 
   var next = getNodeBySection("abertura");
 
@@ -249,24 +343,67 @@ const generateInsult = () => {
 
     let useThisSection = true;
     if(typeof next.optional != "undefined" && next.optional === true){
-      useThisSection = Math.random() > 0.5;
+      useThisSection = Math.random() < 0.5;
     }
 
     if(useThisSection){
-      const tokens_to_use = next.tokens.filter(word => !insultTokens.includes(word));
-      let randomToken = Math.floor(Math.random()*tokens_to_use.length);
-      const chosenToken = tokens_to_use[randomToken];
-      insultTokens.push(chosenToken);
+
+      let chosenToken = next.tokens[Math.floor(Math.random() * next.tokens.length)];
+
+      if(isFeminineInsult){
+        for(const genderedPair of genderedPairs){
+          if(genderedPair.masculine == chosenToken){
+            chosenToken = genderedPair.feminine;
+            break;
+          }
+        }
+      }else if(isMasculineInsult){
+        for(const genderedPair of genderedPairs){
+          if(genderedPair.feminine == chosenToken){
+            chosenToken = genderedPair.masculine;
+            break;
+          }
+        }
+      }else{
+        for(const genderedPair of genderedPairs){
+          if(genderedPair.feminine == chosenToken){
+            isFeminineInsult = true;
+            break;
+          }
+          if(genderedPair.masculine == chosenToken){
+            isMasculineInsult = true;
+            break;
+          }
+        }
+      }
+
+      let usedSynonym = false;
+      for(const synonymsList of synonyms){
+        if(synonymsList.includes(chosenToken)){
+          for(const synonymToken of synonymsList){
+            if(insultTokens.join(" ").split(" ").includes(synonymToken)){
+              usedSynonym = true;
+              console.log(synonymsList);
+              break;
+            }
+          }
+        }
+      }
+
+      const tokenAlreadyUsed = insultTokens.join(" ").split(" ").includes(chosenToken);
+
+      if(!tokenAlreadyUsed && !usedSynonym){
+        insultTokens.push(chosenToken);
+      }
     }
 
     if(next.section == "fim"){
       break;
     }
 
-    let randomNext = Math.floor(Math.random()*next.next.length);
-    let nextSection = next.next[randomNext];
+    const nextSection = next.next[Math.floor(Math.random() * next.next.length)];
     next = getNodeBySection(nextSection);
   }
 
-  return insultTokens.join("\n");
+  return insultTokens.join("\n").split(" dos inferno").join("\ndos inferno");
 };

@@ -12,7 +12,9 @@ nodes.push({
     "porra",
     "aê",
     "aou",
-    "olha só"
+    "olha só",
+    "com todo respeito",
+    "na moral"
   ],
   next: [
     "quem"

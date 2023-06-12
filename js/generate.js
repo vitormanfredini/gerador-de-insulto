@@ -40,7 +40,9 @@ nodes.push({
     "moça",
     "moço",
     "cuzão",
-    "cuzona"
+    "sua cuzona",
+    "cuzão",
+    "seu cuzão"
   ],
   next: [
     "abertura_opcional"
@@ -317,6 +319,10 @@ const genderedPairs = [
   {
     masculine: 'cuzão',
     feminine: 'cuzona',
+  },
+  {
+    masculine: 'seu cuzão',
+    feminine: 'sua cuzona',
   },
   {
     masculine: 'arrombado dos inferno',

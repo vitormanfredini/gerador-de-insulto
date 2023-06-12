@@ -256,6 +256,7 @@ nodes.push({
 });
 
 const synonyms = [
+  ["porra", "pô", "po"],
   ["caralho", "caraio", "krl"],
   ["fdp", "fia da puta"],
   ["vsf", "sifudê", "se fuder"],

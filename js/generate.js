@@ -322,6 +322,10 @@ const genderedPairs = [
   {
     masculine: 'cuzão dos inferno',
     feminine: 'cuzona dos inferno',
+  },
+  {
+    masculine: 'senhor',
+    feminine: 'madame'
   }
 ];
 

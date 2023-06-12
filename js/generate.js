@@ -120,23 +120,23 @@ nodes.push({
     "com isso"
   ],
   next: [
-    "principal_2_c"
+    "finalizacao"
   ]
 });
 
-nodes.push({
-  section: "principal_2_c",
-  tokens: [
-    "fei",
-    "véi",
-    "mano",
-    "mina"
-  ],
-  next: [
-    "finalizacao"
-  ],
-  optional: true
-});
+// nodes.push({
+//   section: "principal_2_c",
+//   tokens: [
+//     "fei",
+//     "véi",
+//     "mano",
+//     "mina"
+//   ],
+//   next: [
+//     "finalizacao"
+//   ],
+//   optional: true
+// });
 
 nodes.push({
   section: "principal_3",

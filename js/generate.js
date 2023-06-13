@@ -235,7 +235,9 @@ nodes.push({
     "arrombado",
     "cuzão",
     "arrombado dos inferno",
-    "cuzão dos inferno"
+    "cuzão dos inferno",
+    "arrombada do caralho",
+    "cuzona do caralho"
   ],
   next: [
     "complemento"
@@ -262,8 +264,8 @@ const synonyms = [
   ["caralho", "caraio", "krl"],
   ["fdp", "fia da puta"],
   ["vsf", "sifudê", "se fuder"],
-  ["arrombado dos inferno", "arrombado", "arrombada dos inferno", "arrombada"],
-  ["cuzão dos inferno", "cuzão", "cuzona dos inferno", "cuzona"],
+  ["arrombado dos inferno", "arrombado", "arrombada dos inferno", "arrombada", "arrombada do caralho", "arrombado do caralho"],
+  ["cuzão dos inferno", "cuzão", "cuzona dos inferno", "cuzona", "cuzona do caralho", "cuzão do caralho"],
   ["tomar no cu", "tmnc"]
 ];
 
@@ -331,6 +333,10 @@ const genderedPairs = [
   {
     masculine: 'cuzão dos inferno',
     feminine: 'cuzona dos inferno',
+  },
+  {
+    masculine: 'cuzão do caralho',
+    feminine: 'cuzona do caralho',
   },
   {
     masculine: 'senhor',
